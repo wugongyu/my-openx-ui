@@ -1,0 +1,6 @@
+# 本文件会让pnpm使用monorepo模式管理本项目，文件内容旨在告诉pnpm那些目录将被划分为独立模块
+packages:
+  # 根目录下的 docs 是一个独立的文档应用，应该被划分为一个模块
+  - docs
+  # packages 目录下的每一个目录都作为一个独立的模块
+  - packages/*
