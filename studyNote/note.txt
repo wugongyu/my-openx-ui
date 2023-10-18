@@ -1,0 +1,20 @@
+1、monorepo
+单一存储库，包含多个有明确关系的项目
+有利于：代码复用，提高协作效率，实现集中管理和统一构建，快速定位问题，一个版本（无版本冲突）。
+
+2、pnpm
+优势：
+  硬链接节约磁盘资源，
+  软链接（可以理解为快捷方式）优化依赖管理，更安全地访问依赖（解决幽灵依赖的问题）。
+项目代码在某些情况下可以在代码中使用没有被定义在 package.json 中的包，这种情况即【幽灵依赖】。
+
+相关指令：
+i 即install缩写，安装指定依赖包；
+-D, 即--save-dev 将指定依赖包安装至devDependencies中
+-S, 即--save 将指定依赖包安装至dependencies中
+-w, --workspace-root，可以将依赖包安装到工程的根目录下，作为所有 package 的公共依赖。
+-wD，表示这是一个开发依赖，会装到根目录pacakage.json 中的 devDependencies 中
+-wS，会将依赖包安装到根目录pacakage.json 中的 dependencies 中
+--filter 参数，可以用来对特定的package进行某些操作
+
+

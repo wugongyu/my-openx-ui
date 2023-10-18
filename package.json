@@ -1,8 +1,16 @@
 {
   "name": "openx-ui",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build:ui": "pnpm --filter ./packages/** run build"
+  },
   "devDependencies": {
-
+    "@vitejs/plugin-vue": "^4.4.0",
+    "sass": "^1.69.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
   }
 }

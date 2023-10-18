@@ -1,9 +1,12 @@
 {
   "name": "@openxui/button",
   "version": "0.0.0",
-
   "description": "",
-  "keywords": ["vue", "ui", "component library"],
+  "keywords": [
+    "vue",
+    "ui",
+    "component library"
+  ],
   "author": "hoooooongyu",
   "license": "MIT",
   "homepage": "https://github.com/wugongyu/my-openx-ui/blob/master/README.md",
@@ -11,33 +14,31 @@
     "type": "git",
     "url": "git+https://github.com/wugongyu/my-openx-ui.git"
   },
-  "bugs": { 
-    "url" : "https://github.com/wugongyu/my-openx-ui/issues"
+  "bugs": {
+    "url": "https://github.com/wugongyu/my-openx-ui/issues"
   },
   "scripts": {
-    "build": "echo build",
+    "build": "vite build",
     "test": "echo test"
   },
-
-  "main": "",
-  "module": "",
+  "main": "./dist/openxui-button.umd.js",
+  "module": "./dist/openxui-button.mjs",
   "types": "",
   "exports": {
     ".": {
-      "require": "",
-      "module": "",
+      "require": "./dist/openxui-button.umd.js",
+      "module": "./dist/openxui-button.mjs",
       "types": ""
     }
   },
-
   "files": [
     "dist",
     "README.md"
   ],
-
   "peerDependencies": {
     "vue": ">=3.0.0"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@openxui/shared": "workspace:^"
+  }
 }
