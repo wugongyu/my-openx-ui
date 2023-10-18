@@ -23,12 +23,12 @@
   },
   "main": "./dist/openxui-ui.umd.js",
   "module": "./dist/openxui-ui.mjs",
-  "types": "",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/openxui-ui.umd.js",
       "module": "./dist/openxui-ui.mjs",
-      "types": ""
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [

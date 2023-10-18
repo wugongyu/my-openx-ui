@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { hello } from "@openxui/shared";
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   modelValue?: string;
 }>(), {
   modelValue: '',
@@ -20,7 +20,7 @@ const emit = defineEmits<{
     (event: 'update:modelValue', val: string): void;
   }>();
 
-const handleInputChange = (e) => {
+const handleInputChange = (e: any) => {
   const currentValue = e.target.value;
   emit('update:modelValue', currentValue);
   hello(currentValue);

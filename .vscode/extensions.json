@@ -1,0 +1,7 @@
+// .vscode/extensions.json
+{
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+  ]
+}

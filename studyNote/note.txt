@@ -17,4 +17,25 @@ i 即install缩写，安装指定依赖包；
 -wS，会将依赖包安装到根目录pacakage.json 中的 dependencies 中
 --filter 参数，可以用来对特定的package进行某些操作
 
+3、vite
+新型前端构建工具，显著提升前端开发体验。
+
+Vite 的快捷和优秀体验更多地体现在配置与操作上，而非开发服务器的效率。
+
+4、typescript
+集成 TypeScript，为组件库的开发注入类型系统的支持
+
+
+
+整体思路：
+
+1）首先我们要在项目的根目录安装公共依赖，公司内网的项目可以使用 .npmrc 文件指定特殊网络环境下的 npm 配置，并提交到仓库中方便他人安装依赖。
+2）接着我们为每一个子包预设了源码，填写了 vite.config 文件，在 package.json 中配置 build 构建脚本。添加 @vitejs/plugin-vue 插件可以使 Vite 识别 Vue SFC 语法；用 pnpm 过滤器选中所有子包执行 build 命令，可以达到整体构建的目的。
+3）之后，我们在 monorepo 项目下搭建了一个 web 应用作为临时样例，展示我们的组件。
+4）我们发现即使没有配置 TypeScript，仅仅 Vite 也能够成功构建 ts 代码。经过研究后，我们明确了 Vite 只负责转译，tsconfig 的配置大部分对于 Vite 是不生效的，这些配置主要影响 IDE 语言服务以及 tsc 的类型检查。
+5）我们没有采用每个子项目一个 tsconfig 的组织方式，而是按照代码用途的区别(node脚本和源码)划分不同的 tsconfig 配置，在根目录下集中管理。但对于 demo 样例应用，由于其不参与集中构建，我们独立为其设置了 tsconfig.json。
+6）我们通过将 tsconfig 的 paths 路径别名设置得与 monorepo 下的包名一致，使得 IDE 将内部依赖解析到对应的源码而非产物，又对 Vite 的 resolve.alias 别名做了同样的设置，最终我们的 demo 样例项目实现了热更新——修改其依赖的组件源码，能够立即反馈在页面上。
+7）vue-tsc 是 vue 语言服务的核心模块之一，我们用它实现了类型检查和声明文件 d.ts 导出。为了适应 monorepo 项目的目录结构，我们实现了一个脚本将集中的声明文件移动到对应模块的产物目录下。
+8）完成 TypeScript 的集成后，我们进一步优化了先前的整体构建流程，通过 npm script 加入了清理产物、类型检查、导出类型声明的步骤，至此一个比较完善的组件库构建模式成型了。
+9）最后，我们集成了 IDE 插件 Volar、TypeScript Vue Plugin，开启了 takeover 模式，获得了编写 vue - ts 代码的最佳体验。还通过在 .vscode 目录下加入项目级 IDE 配置文件 settings.json 和 extensions.json，引导其他贡献者安装插件，获取推荐的预设。
 
