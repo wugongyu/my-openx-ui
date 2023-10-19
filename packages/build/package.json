@@ -1,5 +1,5 @@
 {
-  "name": "@openxui/input",
+  "name": "@openxui/build",
   "version": "0.0.0",
   "description": "",
   "keywords": [
@@ -21,13 +21,13 @@
     "build": "vite build",
     "test": "echo test"
   },
-  "main": "./dist/openxui-input.umd.js",
-  "module": "./dist/openxui-input.mjs",
+  "main": "./dist/openxui-build.umd.js",
+  "module": "./dist/openxui-build.mjs",
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/openxui-input.umd.js",
-      "import": "./dist/openxui-input.mjs",
+      "require": "./dist/openxui-build.umd.js",
+      "import": "./dist/openxui-build.mjs",
       "types": "./dist/src/index.d.ts"
     }
   },
@@ -36,9 +36,20 @@
     "README.md"
   ],
   "peerDependencies": {
+    "vite": ">=3.0.0",
     "vue": ">=3.0.0"
   },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
   "dependencies": {
-    "@openxui/shared": "workspace:^"
+    "@rollup/plugin-replace": "^5.0.4",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "type-fest": "^4.5.0",
+    "typescript": "^5.2.2",
+    "vite-plugin-inspect": "^0.7.40"
   }
 }

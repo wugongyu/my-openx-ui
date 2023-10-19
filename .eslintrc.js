@@ -74,6 +74,8 @@ module.exports = defineConfig({
         '**/vitest.config.*',
       ],
       rules: {
+        // 关闭 eslint 的禁止用相对路径引用其他包的规则
+        'import/no-relative-packages': 'off',
         'no-console': 'off',
       },
     },

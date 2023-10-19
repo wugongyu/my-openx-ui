@@ -47,3 +47,10 @@ Vite 的快捷和优秀体验更多地体现在配置与操作上，而非开发
 6、stylelint
 Stylelint 是一个强大的 CSS 格式化工具
 
+7、commitlint 提交格式化
+
+
+8、lint-staged
+  增量检查
+
+
