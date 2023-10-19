@@ -12,5 +12,5 @@ export default defineConfig({
         replacement: join(__dirname, '..', 'packages', '$1', 'src'),
       },
     ],
-  }
-})
+  },
+});

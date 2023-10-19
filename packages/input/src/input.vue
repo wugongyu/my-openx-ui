@@ -4,12 +4,13 @@
       type="text"
       :value="modelValue"
       @input="handleInputChange"
-    />
+    >
   </div>
 </template>
 
 <script setup lang="ts">
-import { hello } from "@openxui/shared";
+import { hello } from '@openxui/shared';
+
 withDefaults(defineProps<{
   modelValue?: string;
 }>(), {
@@ -17,15 +18,16 @@ withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-    (event: 'update:modelValue', val: string): void;
-  }>();
+  (event: 'update:modelValue', val: string): void;
+}>();
 
 const handleInputChange = (e: any) => {
   const currentValue = e.target.value;
   emit('update:modelValue', currentValue);
   hello(currentValue);
-}
+};
 </script>
 
 <style scoped lang="scss">
+
 </style>

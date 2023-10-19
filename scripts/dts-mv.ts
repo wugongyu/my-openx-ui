@@ -17,19 +17,13 @@ const PKG_DTS_RELATIVE_DIR = 'dist';
 /** 包的代码入口相对目录 */
 const PKG_ENTRY_RELATIVE_DIR = 'src';
 
-async function main() {
-  const pkgs = await match();
-  const tasks = pkgs.map(resolve);
-  await Promise.all(tasks);
-}
-
 /** 寻找所有需要移动 dts 的包 */
 async function match() {
   const res = await readdir(PKGS_DTS_DIR, { withFileTypes: true });
   return res.filter((item) => item.isDirectory()).map((item) => item.name);
 }
 
-/** 
+/**
  * 处理单个包的 dts 移动
  * @param pkgName 包名
  */
@@ -42,20 +36,26 @@ async function resolve(pkgName: string) {
       const source = join(sourceDir, file);
       const target = join(targetDir, file);
       console.log(`[${pkgName}]: copying: ${source} => ${target}`);
-      // source as target file and copy to targetDir 
+      // source as target file and copy to targetDir
       return cp(source, target, {
         force: true,
         recursive: true,
-      })
-    })
+      });
+    });
     await Promise.all(cpTasks);
-    console.log(`[${pkgName}]: copied successfully!`);  
+    console.log(`[${pkgName}]: copied successfully!`);
   } catch (e) {
     console.log(`[${pkgName}]: failed to copy!`);
   }
 }
 
+async function main() {
+  const pkgs = await match();
+  const tasks = pkgs.map(resolve);
+  await Promise.all(tasks);
+}
+
 main().catch((e) => {
   console.error(e);
   process.exit(1);
-})
+});

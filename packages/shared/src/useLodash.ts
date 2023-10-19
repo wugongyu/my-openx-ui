@@ -1,5 +1,5 @@
 import lodash from 'lodash';
 
-export function useLodash(){
+export function useLodash() {
   return lodash;
 }

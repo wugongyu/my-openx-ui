@@ -39,3 +39,11 @@ Vite 的快捷和优秀体验更多地体现在配置与操作上，而非开发
 8）完成 TypeScript 的集成后，我们进一步优化了先前的整体构建流程，通过 npm script 加入了清理产物、类型检查、导出类型声明的步骤，至此一个比较完善的组件库构建模式成型了。
 9）最后，我们集成了 IDE 插件 Volar、TypeScript Vue Plugin，开启了 takeover 模式，获得了编写 vue - ts 代码的最佳体验。还通过在 .vscode 目录下加入项目级 IDE 配置文件 settings.json 和 extensions.json，引导其他贡献者安装插件，获取推荐的预设。
 
+
+
+5、eslint
+代码风格规范化
+
+6、stylelint
+Stylelint 是一个强大的 CSS 格式化工具
+
