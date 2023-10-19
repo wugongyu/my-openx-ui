@@ -2,6 +2,7 @@
   "name": "openx-ui",
   "private": true,
   "scripts": {
+    "lint-staged": "lint-staged",
     "prepare": "husky install",
     "clean:type": "rimraf ./dist",
     "type:node": "tsc -p tsconfig.node.json --noEmit --composite false",
@@ -25,6 +26,7 @@
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-vue": "^9.17.0",
     "husky": "^8.0.3",
+    "lint-staged": "^15.0.1",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.5",
     "sass": "^1.69.3",

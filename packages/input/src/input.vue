@@ -27,7 +27,3 @@ const handleInputChange = (e: any) => {
   hello(currentValue);
 };
 </script>
-
-<style scoped lang="scss">
-
-</style>
