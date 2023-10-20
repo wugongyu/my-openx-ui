@@ -1,4 +1,4 @@
 // packages/shared/vite.config.ts
-import { generateConfig } from '../build/build.config';
+import { generateConfig } from '../build/scripts';
 
 export default generateConfig();

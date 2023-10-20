@@ -14,7 +14,10 @@ export function usePathAbsolute(basePath: string) {
   return (...paths: string[]) => normalizePath(resolve(basePath, ...paths));
 }
 
-/** 获取相对于当前脚本执行位置的绝对路径 */
+/**
+ * 获取相对于当前脚本执行位置的绝对路径.
+ *  通过 pnpm --filter xxx 为每个子包执行任务时，脚本执行目录 process.cwd() 会变成子包的根目录，而不是整个项目的根目录。
+ *  */
 export const absoluteCwd = usePathAbsolute(process.cwd());
 
 /** 给予一个基础路径，获取到一个以此为基准计算相对路径的方法 */

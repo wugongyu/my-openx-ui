@@ -69,14 +69,23 @@ export function getPresetPlugin<K extends keyof GenerateConfigPluginsOptions>(
  */
 export function getPresetPlugins(options: GenerateConfigPluginsOptions = {}) {
   const result: PluginOption[] = [];
-
-  result.push(
-    getPresetPlugin(options, 'pluginVue', vue),
-    getPresetPlugin(options, 'pluginInspect', inspect),
-    getPresetPlugin(options, 'pluginVisualizer', visualizer),
-    getPresetPlugin(options, 'pluginReplace', replace),
-  );
-
+  const presetPluginMap: Record<string, any> = {
+    pluginVue: { plugin: vue },
+    pluginInspect: { plugin: inspect },
+    pluginVisualizer: { plugin: visualizer },
+    pluginReplace: { plugin: replace },
+  };
+  Object.keys(presetPluginMap).forEach((k) => {
+    if (presetPluginMap[k]) {
+      result.push(
+        getPresetPlugin(
+          options,
+          k as keyof GenerateConfigPluginsOptions,
+          presetPluginMap[k].plugin,
+        ),
+      );
+    }
+  });
   return result;
 }
 
