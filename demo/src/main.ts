@@ -1,5 +1,8 @@
-// demo/src/main.ts
 import { createApp } from 'vue';
+import { Theme } from '@openxui/ui';
 import App from './App.vue';
+import 'virtual:uno.css';
 
-createApp(App).mount('#app');
+const app = createApp(App);
+app.use(Theme);
+app.mount('#app');

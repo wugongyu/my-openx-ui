@@ -1,4 +1,8 @@
 // packages/button/vite.config.ts
 import { generateVueConfig } from '../build/scripts';
 
-export default generateVueConfig();
+export default generateVueConfig({
+  presetOpenxuiOptions: {
+    include: ['button'],
+  },
+});

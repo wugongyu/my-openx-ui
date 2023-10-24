@@ -4,8 +4,9 @@ import { presetUno, PresetUnoOptions } from 'unocss/preset-uno';
 import unocss from 'unocss/vite';
 import transformerDirectives from '@unocss/transformer-directives';
 import { generateConfig } from './common';
-import { absCwd, relCwd, GenerateConfigOptions } from '../src';
-// import { openxuiPreset, OpenxuiPresetOptions } from '../../styles/src/unoPreset';
+import { absoluteCwd, relativeCwd, GenerateConfigOptions } from '../src';
+// eslint-disable-next-line import/no-relative-packages
+import { openxuiPreset, OpenxuiPresetOptions } from '../../styles/src/unoPreset';
 
 /** 拓展构建选项 */
 export interface GenerateVueConfigOptions extends GenerateConfigOptions {
@@ -16,7 +17,7 @@ export interface GenerateVueConfigOptions extends GenerateConfigOptions {
   presetUnoOptions?: PresetUnoOptions;
 
   /** 传递给组件库 UnoCSS 预设的选项 */
-  // presetOpenxuiOptions?: OpenxuiPresetOptions;
+  presetOpenxuiOptions?: OpenxuiPresetOptions;
 }
 
 export async function generateVueConfig(
@@ -25,7 +26,7 @@ export async function generateVueConfig(
 ) {
   const {
     pluginUno = true,
-    // presetOpenxuiOptions,
+    presetOpenxuiOptions,
     presetUnoOptions,
   } = customOptions || {};
 
@@ -41,7 +42,7 @@ export async function generateVueConfig(
             ...presetUnoOptions,
           }),
           // 集成组件库 UnoCSS 预设，组件的部分样式内容交由 UnoCSS 生成。
-          // openxuiPreset(presetOpenxuiOptions),
+          openxuiPreset(presetOpenxuiOptions),
         ],
         transformers: [
           // 支持在 css 中使用 @apply 语法聚合多个原子类
@@ -56,7 +57,7 @@ export async function generateVueConfig(
     // 将组件样式文件的入口写入 package.json 的 exports 字段
     onSetPkg: (pkg, options) => {
       const exports: Record<string, string> = {
-        './style.css': relCwd(absCwd(options.outDir, 'style.css'), false),
+        './style.css': relativeCwd(absoluteCwd(options.outDir, 'style.css'), false),
       };
       Object.assign(
         pkg.exports as Record<string, any>,
