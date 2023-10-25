@@ -100,6 +100,9 @@
       </Button>
     </div>
     <Input />
+    <div>
+      <i class="i-op-alert text-100px c-primary inline-block" />
+    </div>
   </div>
 </template>
 
@@ -119,19 +122,21 @@ import {
 const { setTheme } = useTheme();
 
 const currentGlobalTheme = ref<'default' | 'tiny'>('default');
+const currentSecondLineTheme = ref<'default' | 'tiny'>('default');
 
 // 全局主题切换
 function switchGlobalTheme() {
   if (currentGlobalTheme.value === 'tiny') {
     currentGlobalTheme.value = 'default';
+    currentSecondLineTheme.value = 'default';
     setTheme(themeVars);
   } else {
     currentGlobalTheme.value = 'tiny';
+    currentSecondLineTheme.value = 'tiny';
     setTheme(tinyThemeVars);
   }
 }
 
-const currentSecondLineTheme = ref<'default' | 'tiny'>('default');
 const secondLineThemeVars: OpenxuiCssVarsConfig = reactive({});
 // 局部主题切换
 function switchSecondLineTheme() {

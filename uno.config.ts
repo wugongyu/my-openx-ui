@@ -1,6 +1,9 @@
 /* eslint-disable import/no-relative-packages */
 // uno.config.ts
-import { defineConfig, presetUno, UserConfig } from 'unocss';
+import {
+  defineConfig, presetUno, UserConfig,
+  presetIcons,
+} from 'unocss';
 import transformerDirectives from '@unocss/transformer-directives';
 import { openxuiPreset } from './packages/styles/src/unoPreset';
 
@@ -10,7 +13,12 @@ export default defineConfig({
 
     // 集成完整预设。include 默认情况下集成全部组件的预设配置。
     openxuiPreset(),
-
+    presetIcons({
+      collections: {
+        // Iconify json 集成，后续支持通过 <i class="i-op-xxx"> 来使用图标原子类，并支持按需打包
+        op: () => import('./packages/icons/dist/icons.json').then((i) => i.default),
+      },
+    }),
     // 只集成 theme、button、input 组件的预设
     /*
     openxuiPreset({

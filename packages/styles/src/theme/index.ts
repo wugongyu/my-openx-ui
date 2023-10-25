@@ -40,6 +40,7 @@ export function useTheme() {
   return result;
 }
 
+// Theme：vue插件，在使用useTheme之前需全局安装插件（app.use(Theme)）
 export const Theme: Plugin<OpenxuiCssVarsConfig[]> = {
   install: (app, ...options) => {
     const finalOptions: OpenxuiCssVarsConfig = {};
