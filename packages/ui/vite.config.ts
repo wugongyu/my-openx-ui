@@ -28,11 +28,12 @@ const STYLE_OUT_REL = join(OUT_REL, 'style');
 /** 子包产物相对目录 */
 const PACKAGE_OUT_REL = 'dist';
 
+// 移动样式文件
 function pluginMoveStyles(mode: string): PluginOption {
   if (mode !== 'package') {
     return null;
   }
-
+  // 当前ui包的上一级文件夹路径，获取到所有包的路径
   const absPackages = usePathAbsolute(resolve(process.cwd(), '..'));
 
   return {
@@ -65,6 +66,7 @@ function pluginMoveStyles(mode: string): PluginOption {
         const target = absoluteCwd(STYLE_OUT_REL, `${pkg}.css`);
         try {
           // 只处理产物目录下有 index.css 的子包，不满足条件会被跳过
+          // 将子包复制到STYLE_OUT_REL目录下
           const styleCss = await readFile(source, 'utf-8');
           indexCss += styleCss;
           await cp(source, target, { recursive: true, force: true });
@@ -73,7 +75,7 @@ function pluginMoveStyles(mode: string): PluginOption {
           console.log(`${source} not found!`);
         }
       }
-
+      // 生成全量样式index.css文件
       console.log('generating index.css...');
       await writeFile(absoluteCwd(STYLE_OUT_REL, 'index.css'), indexCss, 'utf-8');
     },

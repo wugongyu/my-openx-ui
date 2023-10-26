@@ -1,4 +1,3 @@
-// packages/build/src/generateConfig/lib.ts
 import { PackageJson } from 'type-fest';
 import { LibraryOptions, LibraryFormats, BuildOptions } from 'vite';
 import { statSync } from 'node:fs';

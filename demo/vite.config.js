@@ -4,6 +4,8 @@ import vue from '@vitejs/plugin-vue';
 import { join } from 'node:path';
 import unocss from 'unocss/vite';
 
+console.log(process.cwd);
+
 export default defineConfig({
   plugins: [
     vue(),

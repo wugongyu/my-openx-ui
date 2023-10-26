@@ -1,11 +1,10 @@
-// packages/build/src/utils/json.ts
 import {
   readFile,
   writeFile,
 } from 'node:fs/promises';
 
 /**
- * 从文件中读取出 JSON 对象
+ * 读取文件并将文件流作为JSON 对象返回
  * @param filePath 文件路径
  * @returns JSON 对象
  */

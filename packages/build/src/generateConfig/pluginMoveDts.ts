@@ -30,27 +30,26 @@ export function pluginMoveDts(options: GenerateConfigOptions = {}): PluginOption
     throw new Error(`Could not find tsconfig file: ${dts}`);
   }
 
-  // 解析出来的路径都是绝对路径
+  // 解析出来的路径都是绝对路径 rootDir: '.'， outDir: 'dist',
   const { rootDir, outDir: tsOutDir } = tsconfigs.options;
 
   if (!rootDir || !tsOutDir) {
     throw new Error(`Could not find rootDir or outDir in tsconfig file: ${dts}`);
   }
 
-  const relRoot = usePathRelative(rootDir);
-  const absRoot = usePathAbsolute(rootDir);
+  const relRoot = usePathRelative(rootDir); // './'
+  const absRoot = usePathAbsolute(rootDir); // openx-ui/
 
   /** 当前包相对于根目录的路径 */
   const relPackagePath = relRoot(process.cwd());
 
-  // 源码入口的相对路径
+  // 当前包源码入口的相对路径
   const { rel: relEntryPath } = resolveEntry(entry);
-
   return {
     name: 'move-dts',
     apply: 'build',
     async closeBundle() {
-      const source = absRoot(tsOutDir, relPackagePath, relEntryPath);
+      const source = absRoot(tsOutDir, relPackagePath, relEntryPath); // 'dist',
       const target = absoluteCwd(outDir, relEntryPath);
       try {
         // 移动产物

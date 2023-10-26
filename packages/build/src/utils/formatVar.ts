@@ -1,4 +1,7 @@
-// packages/build/src/utils/formatVar.ts
+/**
+ * 根据正则表达式匹配由数字字母组合而成的字符串
+ * 返回匹配的字符串数组
+*/
 function splitVar(varName: string) {
   const reg = /[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|[^a-zA-Z0-9])|[A-Z]?[a-z]+|[A-Z]|[0-9]/g;
   return varName.match(reg) || <string[]>[];

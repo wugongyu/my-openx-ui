@@ -1,4 +1,6 @@
-# packages/build/src
+# build包
+
+- packages/build/src
 
 📦src
 ┣ 📂generateConfig # 实现生成构建配置的主体方法
