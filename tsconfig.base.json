@@ -7,12 +7,12 @@
     // tsc 编译产物输出目录
     "outDir": "dist",
     // 编译目标 js 的版本
-    "target": "es2022",
-    // 
+    "target": "ES2015",
+    //
     "module": "esnext",
     // 模块解析策略
     "moduleResolution": "node",
-    // 是否生成辅助 debug 的 .map.js 文件。 
+    // 是否生成辅助 debug 的 .map.js 文件。
     "sourceMap": false,
     // 产物不消除注释
     "removeComments": false,

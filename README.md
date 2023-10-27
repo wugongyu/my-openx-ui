@@ -1,5 +1,73 @@
 # note
 
+## package.json相关配置项说明
+
+1.  基本信息配置项
+
+```json
+{
+  "name": "vue",
+  // 一句话简介，可以作为关键字搜索的依据
+  "description": "The progressive JavaScript framework for building modern web UI.",
+  // 关键字、标签，正确设置可以提高在 npm 的搜索权重与曝光度
+  "keywords": ["vue"],
+  // 包的作者，主要 Owner
+  "author": "Evan You",
+  // 开源许可证
+  "license": "MIT",
+  // 项目主页
+  "homepage": "https://github.com/vuejs/core/tree/main/packages/vue#readme",
+  // 源码仓库
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/core.git"
+  },
+  // BUG 反馈方式，支持 `bugs.email` 邮箱字段
+  "bugs": {
+    "url": "https://github.com/vuejs/core/issue"
+  }
+}
+```
+
+2.  入口信息配置项
+
+    - cjs 规范
+      main 和 exports['.'].require 字段用于设置 require() 方式的加载入口
+
+    ```json
+    // 入口定义
+    {
+      "name": "my-module",
+      "main": "index.js",
+      "exports": {
+        ".": {
+          "require": "index.js"
+        }
+        // ...
+      }
+    }
+    ```
+
+    - esm 规范
+
+    module 和 exports.\*.import 字段用于设置 import 的加载入口(esm 规范 import { ref } from 'vue')
+
+    ```json
+    // 入口定义
+    {
+      "name": "my-module",
+      "main": "index.js",
+      "module": "index.mjs",
+      "exports": {
+        ".": {
+          "require": "index.js",
+          "import": "index.mjs"
+        }
+        // ...
+      }
+    }
+    ```
+
 ## 项目组织结构
 
 📦openx-ui
