@@ -9,7 +9,10 @@
     "type:src": "pnpm run clean:type && vue-tsc -p tsconfig.src.json --composite false --declaration --emitDeclarationOnly",
     "build:ui": "pnpm run type:src && pnpm --filter ./packages/** run build",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./",
-    "lint:style": "stylelint --fix ./**/*.{css,scss,vue,html}"
+    "lint:style": "stylelint --fix ./**/*.{css,scss,vue,html}",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.0",

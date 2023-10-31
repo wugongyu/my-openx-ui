@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-// packages/config-provider/src/config-provider.vue
 import { computed } from 'vue';
 import { generateCssVars, themeColorLevelsEnabledKeys } from '@openxui/styles';
 import { ConfigProviderProps, defaultConfigProviderProps } from './config-provider';
