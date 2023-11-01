@@ -20,6 +20,7 @@ i 即install缩写，安装指定依赖包；
 -wD，表示这是一个开发依赖，会装到根目录pacakage.json 中的 devDependencies 中
 -wS，会将依赖包安装到根目录pacakage.json 中的 dependencies 中
 --filter 参数，可以用来对特定的package进行某些操作
+-C, "-C"选项表示更改当前工作目录。通过"-C"选项指定一个路径，可以让pnpm在该路径下运行脚本
 
 ## 3、vite
 

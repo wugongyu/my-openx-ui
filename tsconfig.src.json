@@ -1,4 +1,4 @@
-// tsconfig.src.json
+// 所有模块中 src 目录下的源码文件的ts类型检查规则配置文件
 {
   // 继承基础配置
   "extends": "./tsconfig.base.json",

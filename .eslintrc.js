@@ -1,4 +1,4 @@
-// .eslintrc.js
+// js检查规则配置文件
 const { defineConfig } = require('eslint-define-config');
 const path = require('path');
 
